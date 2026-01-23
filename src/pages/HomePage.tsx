@@ -52,8 +52,10 @@ export const HomePage = () => {
           Ihres Kindes sind. Deshalb begleiten wir jedes Kind im Alter von 1 bis
           6 Jahren mit viel Herz und Engagement auf seinem ganz persönlichen Weg
           – hin zu einem selbstbewussten, neugierigen und kompetenten kleinen
-          Menschen. Was uns dabei besonders am Herzen liegt, und unsere Kita
-          auszeichnet:
+          Menschen.
+        </Typography>
+        <Typography variant="h6" sx={{ mb: 0 }}>
+          Was uns dabei besonders am Herzen liegt, und unsere Kita auszeichnet:
         </Typography>
       </Box>
 

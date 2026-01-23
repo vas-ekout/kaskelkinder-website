@@ -21,7 +21,7 @@ const lightTheme = createTheme({
     },
     background: {
       default: "hsl(70, 20%, 95%)",
-      paper: "hsl(70, 20%, 93%)",
+      paper: "hsl(50, 15%, 90%)",
       overlay: "hsl(196, 59%, 90%)",
     },
     text: {
@@ -32,7 +32,7 @@ const lightTheme = createTheme({
     fontFamily: '"Vend Sans", sans-serif',
     fontWeightRegular: 400,
     fontSize: 16,
-    body1: { fontSize: 16, lineHeight: 1.65 },
+    body1: { fontSize: 16, lineHeight: 1.65, marginBottom: 16 },
     body2: { fontSize: 14, lineHeight: 1.5, textAlign: "center" },
     h1: {
       fontFamily: '"Amatic SC", sans-serif',

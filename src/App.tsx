@@ -5,6 +5,8 @@ import { Header } from "./components/header/Header";
 import { HomePage } from "./pages/HomePage";
 import { useGetPagePadding } from "./hooks/useGetPagePadding";
 import { Footer } from "./components/footer/Footer";
+import { ConceptPage } from "./pages/ConceptPage";
+import { TeamPage } from "./pages/TeamPage";
 
 const PageWrapper = styled("div")(() => ({
   maxWidth: "1900px",
@@ -17,6 +19,7 @@ const App = () => {
   const MainContainer = styled("main")(() => ({
     marginInline: pagePadding,
     paddingBottom: 200,
+    minHeight: "calc(100vh - 400px)",
   }));
 
   return (
@@ -26,6 +29,8 @@ const App = () => {
         <MainContainer>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/concept" element={<ConceptPage />} />
+            <Route path="/team" element={<TeamPage />} />
           </Routes>
         </MainContainer>
         <Footer />
