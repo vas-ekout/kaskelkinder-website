@@ -1,15 +1,19 @@
 import { Box } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
 import KaskelLogo from "../../assets/imgs/logo_kaskelkinder_300x200.png";
 import HeaderBg from "../../assets/imgs/header-bg.png";
 import { Navigation } from "./Navigation";
 import { useGetPagePadding } from "../../hooks/useGetPagePadding";
 
-export const Header = () => {
+interface HeaderProps {
+  id: string;
+}
+
+export const Header = ({ id }: HeaderProps) => {
   const { pagePadding } = useGetPagePadding();
 
   return (
     <Box
+      id={id}
       component="header"
       sx={{
         position: "relative",
@@ -36,7 +40,7 @@ export const Header = () => {
         },
       }}
     >
-      <Box component={RouterLink} to="/">
+      <Box component="a" href="#home">
         <img
           src={KaskelLogo}
           style={{ width: 120, zIndex: 10, position: "relative", left: -6 }}

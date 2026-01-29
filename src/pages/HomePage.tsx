@@ -1,4 +1,4 @@
-import { Box, Divider, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { BenefitCard, type BenefitCardProps } from "../components/BenefitCard";
 
 export const HomePage = () => {
@@ -78,8 +78,6 @@ export const HomePage = () => {
           />
         ))}
       </Box>
-
-      <Divider />
 
       <Typography variant="subtitle1">
         Unser Laden ist{" "}

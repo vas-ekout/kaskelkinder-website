@@ -1,4 +1,3 @@
-import { Link as RouterLink, useLocation } from "react-router-dom";
 import {
   Button,
   Link,
@@ -10,21 +9,16 @@ import {
 interface NavItemProps {
   label: string;
   hasButtonStyle?: boolean;
-  route: string;
+  sectionId: string;
   onClick?: () => void;
 }
-
-const activeNavWeight = 700;
 
 export const NavItem = ({
   label,
   hasButtonStyle,
-  route,
+  sectionId,
   onClick,
 }: NavItemProps) => {
-  const location = useLocation();
-  const isActive =
-    location.pathname === route || location.pathname.startsWith(`${route}/`);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("lg"));
@@ -32,10 +26,10 @@ export const NavItem = ({
   const navItemSx: SxProps = {
     position: "relative",
     fontFamily: '"Vend Sans", sans-serif',
-    fontWeight: isActive ? activeNavWeight : 600,
+    fontWeight: 600,
     fontSize: isSmallScreen ? 22 : isMediumScreen ? 15 : 16,
     cursor: "pointer",
-    textDecoration: hasButtonStyle ? "none" : isActive ? "underline" : "none",
+    textDecoration: "none",
     textDecorationThickness: "1px",
     textUnderlineOffset: "10px",
     transition: "all 300ms",
@@ -48,10 +42,10 @@ export const NavItem = ({
   return hasButtonStyle ? (
     <Link
       onClick={onClick}
-      component={RouterLink}
-      to={route}
+      component="a"
       underline="none"
       color="primary.main"
+      href={`#${sectionId}`}
     >
       <Button
         variant="contained"
@@ -64,11 +58,11 @@ export const NavItem = ({
   ) : (
     <Link
       onClick={onClick}
-      component={RouterLink}
-      to={route}
+      component="a"
       underline="none"
       color="primary.main"
       sx={navItemSx}
+      href={`#${sectionId}`}
     >
       {label}
     </Link>
