@@ -26,14 +26,14 @@ export const NavBar = ({ onClickNavItem }: NavBarProps) => {
   };
 
   const navItems = [
-    ...(isSmallScreen ? [{ route: "/", label: "Home" }] : []),
-    { route: "/concept", label: "Pädagogisches Konzept" },
-    { route: "/team", label: "Team" },
-    { route: "/facilities", label: "Räumlichkeiten" },
-    { route: "/parents-initiative", label: "Elterninitiative" },
-    { route: "/jobs", label: "Jobs" },
-    { route: "/support", label: "Unterstützen" },
-    { route: "/contact", label: "Kontakt", hasButtonStyle: true },
+    ...(isSmallScreen ? [{ sectionId: "home", label: "Home" }] : []),
+    { sectionId: "concept", label: "Pädagogisches Konzept" },
+    { sectionId: "team", label: "Team" },
+    { sectionId: "facilities", label: "Räumlichkeiten" },
+    { sectionId: "parents-initiative", label: "Elterninitiative" },
+    { sectionId: "jobs", label: "Jobs" },
+    { sectionId: "support", label: "Unterstützen" },
+    { sectionId: "contact", label: "Kontakt", hasButtonStyle: true },
   ];
 
   return (
@@ -52,7 +52,7 @@ export const NavBar = ({ onClickNavItem }: NavBarProps) => {
     >
       {navItems.map((item, index) => (
         <motion.div
-          key={item.route}
+          key={item.sectionId}
           custom={index}
           initial={isSmallScreen ? "hidden" : "visible"}
           animate="visible"
@@ -62,7 +62,7 @@ export const NavBar = ({ onClickNavItem }: NavBarProps) => {
             onClick={() => {
               if (onClickNavItem) onClickNavItem();
             }}
-            route={item.route}
+            sectionId={item.sectionId}
             hasButtonStyle={item.hasButtonStyle}
             label={item.label}
           />
