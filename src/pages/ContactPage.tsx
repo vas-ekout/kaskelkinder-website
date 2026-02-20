@@ -6,6 +6,7 @@ import {
   Link,
   styled,
   Typography,
+  useMediaQuery,
   useTheme,
 } from "@mui/material";
 import { SectionImageHeader } from "../components/SectionImageHeader";
@@ -20,7 +21,8 @@ const StyledCard = styled(Card)(() => ({
 }));
 
 export const ContactPage = () => {
-  const { palette } = useTheme();
+  const { breakpoints, palette } = useTheme();
+  const isXsScreen = useMediaQuery(breakpoints.down("sm"));
 
   const openKitaNavigator = () =>
     window.open(
@@ -37,7 +39,7 @@ export const ContactPage = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        gap: 8,
+        gap: 4,
         bgcolor: alpha(palette.primary.light, 0.25),
         borderRadius: 1,
         padding: 4,
@@ -62,7 +64,9 @@ export const ContactPage = () => {
         sx={{
           display: "grid",
           gap: 5,
-          gridTemplateColumns: "repeat(auto-fit, minmax(24rem, 1fr))",
+          gridTemplateColumns: isXsScreen
+            ? "1fr"
+            : "repeat(auto-fit, minmax(24rem, 1fr))",
         }}
       >
         <StyledCard>
