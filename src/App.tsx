@@ -7,6 +7,9 @@ import { Footer } from "./components/footer/Footer";
 import { ConceptPage } from "./pages/ConceptPage";
 import { TeamPage } from "./pages/TeamPage";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
+import { FacilitiesPage } from "./pages/FacilitiesPage";
+import { InitiativePage } from "./pages/InitiativePage";
+import { ContactPage } from "./pages/ContactPage";
 
 const PageWrapper = styled("div")(() => ({
   maxWidth: "1900px",
@@ -22,7 +25,7 @@ const App = () => {
     minHeight: "calc(100vh - 400px)",
     display: "flex",
     flexDirection: "column",
-    gap: 64,
+    gap: 100,
   }));
 
   return (
@@ -41,6 +44,18 @@ const App = () => {
           <Divider />
           <section id="team">
             <TeamPage />
+          </section>
+          <Divider />
+          <section id="facilities">
+            <FacilitiesPage />
+          </section>
+          <Divider />
+          <section id="parents-initiative">
+            <InitiativePage />
+          </section>
+          <Divider />
+          <section id="contact">
+            <ContactPage />
           </section>
         </MainContainer>
         <Footer />

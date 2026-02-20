@@ -5,6 +5,7 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  type SxProps,
 } from "@mui/material";
 import StainRed from "../assets/imgs/stain-red.png";
 import StainPurple from "../assets/imgs/stain-purple.png";
@@ -13,8 +14,10 @@ import StainYellow from "../assets/imgs/stain-yellow.png";
 import StainBrown from "../assets/imgs/stain-brown.png";
 
 export interface BenefitCardProps {
+  cardSx?: SxProps;
   color: "RED" | "PURPLE" | "BLUE" | "YELLOW" | "BROWN";
   headline: string;
+  noRotation?: boolean;
   text: string;
 }
 
@@ -24,7 +27,13 @@ const Stain = styled("img")(() => ({
   opacity: 0.9,
 }));
 
-export const BenefitCard = ({ color, headline, text }: BenefitCardProps) => {
+export const BenefitCard = ({
+  cardSx,
+  color,
+  headline,
+  noRotation,
+  text,
+}: BenefitCardProps) => {
   const { breakpoints } = useTheme();
   const isExtraSmallScreen = useMediaQuery(breakpoints.down("sm"));
 
@@ -119,8 +128,8 @@ export const BenefitCard = ({ color, headline, text }: BenefitCardProps) => {
           position: "relative",
           backgroundColor: "background.paper",
           width: "100%",
-          // rotate: stainSx()?.cardRotation,
-          // transition: "rotate 150ms",
+          borderRadius: 1,
+          ...cardSx,
         }}
       >
         <Stain src={stainSx()?.stain} sx={stainSx()?.top} />
@@ -143,9 +152,11 @@ export const BenefitCard = ({ color, headline, text }: BenefitCardProps) => {
         position: "relative",
         backgroundColor: "background.paper",
         width: "100%",
-        rotate: stainSx()?.cardRotation,
+        borderRadius: 1,
+        rotate: noRotation ? "none" : stainSx()?.cardRotation,
         transition: "rotate 150ms",
         "&:hover": { rotate: "0deg" },
+        ...cardSx,
       }}
     >
       <Stain src={stainSx()?.stain} sx={stainSx()?.top} />

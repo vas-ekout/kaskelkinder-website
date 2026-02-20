@@ -9,9 +9,15 @@ export interface TeamItemCardProps {
   color: "RED" | "PURPLE" | "BLUE" | "YELLOW" | "BROWN";
   headline: string;
   text: string;
+  img: string;
 }
 
-export const TeamItemCard = ({ color, headline, text }: TeamItemCardProps) => {
+export const TeamItemCard = ({
+  color,
+  headline,
+  img,
+  text,
+}: TeamItemCardProps) => {
   const stainSx = () => {
     switch (color) {
       case "RED":
@@ -34,7 +40,7 @@ export const TeamItemCard = ({ color, headline, text }: TeamItemCardProps) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        borderRadius: 1.5,
+        borderRadius: 1,
         backgroundImage: `url(${stainSx().stain})`,
         backgroundRepeat: "no-repeat",
         backgroundPositionX: "50%",
@@ -48,8 +54,12 @@ export const TeamItemCard = ({ color, headline, text }: TeamItemCardProps) => {
           flexShrink: 0,
           width: 130,
           height: 130,
-          bgcolor: "grey.400",
+          backgroundImage: `url(${img})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
           borderRadius: "1000%",
+          border: "1.5px solid",
+          borderColor: "background.paper",
           transform: "translate(0%, -50%)",
         }}
       />

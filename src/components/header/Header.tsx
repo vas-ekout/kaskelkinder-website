@@ -18,7 +18,7 @@ export const Header = ({ id }: HeaderProps) => {
       sx={{
         position: "relative",
         width: "100%",
-        height: 200,
+        height: 172,
         paddingInline: pagePadding,
         paddingBlock: 2,
         display: "flex",

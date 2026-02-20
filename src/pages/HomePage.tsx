@@ -1,5 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { BenefitCard, type BenefitCardProps } from "../components/BenefitCard";
+import HomeImg from "../assets/imgs/home.jpg";
+import { SectionImageHeader } from "../components/SectionImageHeader";
 
 export const HomePage = () => {
   const benefitCards: BenefitCardProps[] = [
@@ -32,18 +34,11 @@ export const HomePage = () => {
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 8 }}>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          backgroundColor: "grey.400",
-          paddingBlock: { xs: 12, sm: 22, md: 30, lg: 32, xl: 40 },
-          paddingInline: { xs: 3, sm: 6, md: 10, lg: 10, xl: 10 },
-        }}
-      >
-        <Typography variant="h1">Wo kleine Entdecker groß werden</Typography>
-      </Box>
-
+      <SectionImageHeader
+        headline="Wo kleine Entdecker groß werden"
+        imgSrc={HomeImg}
+        isLargeImg
+      />
       <Box>
         <Typography variant="h6">Liebe Eltern,</Typography>
         <Typography variant="body1">
@@ -62,11 +57,8 @@ export const HomePage = () => {
       <Box
         sx={{
           display: "grid",
-          flexDirection: { xs: "column", sm: "row" },
           gridTemplateColumns: "repeat(auto-fit, minmax(14rem, 1fr))",
           gap: { xs: 3, sm: 5 },
-          justifyContent: "center",
-          flexWrap: "wrap",
         }}
       >
         {benefitCards.map((card) => (
@@ -75,6 +67,7 @@ export const HomePage = () => {
             color={card.color}
             headline={card.headline}
             text={card.text}
+            cardSx={{ height: "100%" }}
           />
         ))}
       </Box>

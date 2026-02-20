@@ -12,50 +12,59 @@ declare module "@mui/material/styles" {
 
 const breakpoints = { xs: 0, sm: 560, md: 960, lg: 1200, xl: 1536 };
 
+const primary = {
+  light: "hsl(196, 61%, 55%)",
+  main: "hsl(196, 59%, 40%)",
+  dark: "hsl(196, 59%, 20%)",
+};
+
+const background = {
+  default: "hsl(70, 20%, 95%)",
+  paper: "hsl(50, 15%, 92%)",
+  overlay: "hsl(196, 59%, 90%)",
+};
+
+const text = { primary: "hsl(196 59% 5%)" };
+
 const lightTheme = createTheme({
   palette: {
     mode: "light",
-    primary: {
-      light: "hsl(196, 61%, 55%)",
-      main: "hsl(196, 59%, 40%)",
-    },
-    background: {
-      default: "hsl(70, 20%, 95%)",
-      paper: "hsl(50, 15%, 90%)",
-      overlay: "hsl(196, 59%, 90%)",
-    },
-    text: {
-      primary: "hsl(196 59% 5%)",
-    },
+    primary: primary,
+    background: background,
+    text: text,
   },
   typography: {
     fontFamily: '"Vend Sans", sans-serif',
     fontWeightRegular: 400,
     fontSize: 16,
-    body1: { fontSize: 16, lineHeight: 1.65, marginBottom: 16 },
+    body1: { fontSize: 16, lineHeight: 1.65, marginBottom: 24 },
     body2: { fontSize: 14, lineHeight: 1.5, textAlign: "center" },
     h1: {
       fontFamily: '"Amatic SC", sans-serif',
       fontWeight: 700,
       fontSize: 48,
-      color: "hsl(196, 59%, 40%)",
-      WebkitTextStroke: "0.5px hsl(196, 59%, 40%)",
+      lineHeight: 1,
+      letterSpacing: 2,
+      color: primary.light,
+      WebkitTextStroke: `1.5px ${primary.light}`,
       textAlign: "center",
 
       [`@media (min-width:${breakpoints.xs}px)`]: {
         fontSize: 48,
+        WebkitTextStroke: `1px ${primary.light}`,
       },
       [`@media (min-width:${breakpoints.sm}px)`]: {
-        fontSize: 52,
+        fontSize: 60,
+        WebkitTextStroke: `1px ${primary.light}`,
       },
       [`@media (min-width:${breakpoints.md}px)`]: {
-        fontSize: 66,
+        fontSize: 74,
       },
       [`@media (min-width:${breakpoints.lg}px)`]: {
-        fontSize: 80,
+        fontSize: 90,
       },
       [`@media (min-width:${breakpoints.xl}px)`]: {
-        fontSize: 90,
+        fontSize: 112,
       },
     },
     h2: {
@@ -63,10 +72,10 @@ const lightTheme = createTheme({
       fontWeight: 700,
       fontSize: 40,
       lineHeight: 0.9,
-      color: "hsl(196, 59%, 40%)",
+      color: primary.main,
       textAlign: "center",
       marginBottom: 20,
-      WebkitTextStroke: "0.5px hsl(196, 59%, 40%)",
+      WebkitTextStroke: `0.5px ${primary.light}`,
 
       // [`@media (min-width:${breakpoints.xs}px)`]: {
       //   fontSize: 48,
@@ -84,7 +93,7 @@ const lightTheme = createTheme({
       //   fontSize: 90,
       // },
     },
-    h6: { fontSize: 16, fontWeight: 600, lineHeight: 1.65, marginBottom: 16 },
+    h6: { fontSize: 16, fontWeight: 600, lineHeight: 1.65, marginBottom: 8 },
     subtitle1: {
       textAlign: "center",
       fontSize: 24,
@@ -132,6 +141,9 @@ const lightTheme = createTheme({
             "0px 2px 4px -1px rgba(0,0,0,0.1), 0px 4px 5px 0px rgba(0,0,0,0.10), 0px 1px 10px 0px rgba(0,0,0,0.08)",
         },
       },
+    },
+    MuiLink: {
+      styleOverrides: { root: { fontWeight: 700, cursor: "pointer" } },
     },
   },
 });

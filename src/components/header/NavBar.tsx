@@ -31,8 +31,8 @@ export const NavBar = ({ onClickNavItem }: NavBarProps) => {
     { sectionId: "team", label: "Team" },
     { sectionId: "facilities", label: "Räumlichkeiten" },
     { sectionId: "parents-initiative", label: "Elterninitiative" },
-    { sectionId: "jobs", label: "Jobs" },
-    { sectionId: "support", label: "Unterstützen" },
+    // { sectionId: "jobs", label: "Jobs" },
+    // { sectionId: "support", label: "Unterstützen" },
     { sectionId: "contact", label: "Kontakt", hasButtonStyle: true },
   ];
 

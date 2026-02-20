@@ -1,28 +1,23 @@
 import { Box, Typography } from "@mui/material";
+import { SectionImageHeader } from "../components/SectionImageHeader";
+import ConceptImg from "../assets/imgs/concept.jpg";
 
 export const ConceptPage = () => {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: 6 }}>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "grey.400",
-          paddingBlock: { xs: 6, sm: 11, md: 15, lg: 16, xl: 20 },
-          paddingInline: { xs: 3, sm: 6, md: 10, lg: 10, xl: 10 },
-        }}
-      >
-        <Typography variant="h1">Unser pädagogisches Konzept</Typography>
-      </Box>
-
-      <Typography variant="body1">
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      <SectionImageHeader
+        headline="Unser pädagogisches Konzept"
+        imgSrc={ConceptImg}
+      />
+      <Typography variant="subtitle1">
         Uns ist es wichtig gemeinsam mit allen am Erziehungs- und
-        Bildungsprozess beteiligten Personen einen sicheren,
-        adultismuskritischen und diskriminerungsfreien Raum zu schaffen! Dafür
-        setzen wir uns folgende pädagogischen Ziele.
+        Bildungsprozess beteiligten Personen einen{" "}
+        <Typography variant="subtitle1" component="span" fontWeight={500}>
+          sicheren, adultismuskritischen und diskriminerungsfreien Raum zu
+          schaffen!
+        </Typography>{" "}
+        Dafür setzen wir uns folgende pädagogischen Ziele.
       </Typography>
-
       <Box>
         <Typography variant="h6">Pädagogische Ziele</Typography>
         <Typography variant="body1">
@@ -36,9 +31,7 @@ export const ConceptPage = () => {
           zu testen. In Lateinisch sieht zum Beispiel fast jede Schrift gut aus.
           Quod erat demonstrandum.
         </Typography>
-      </Box>
 
-      <Box>
         <Typography variant="h6">Wir sehen das Kind als</Typography>
         <Typography variant="body1">
           Dies ist ein Typoblindtext. Seit 1975 fehlen in den meisten Testtexten
