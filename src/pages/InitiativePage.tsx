@@ -1,6 +1,7 @@
 import InitiativeImg from "../assets/imgs/initiative.jpg";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import Pdf from "../assets/Satzung_Kinderladen_Kaskelkinder_03-2022.pdf";
 
 import {
   Box,
@@ -97,6 +98,7 @@ export const InitiativePage = () => {
           />
         )}
         <Button
+          onClick={() => window.open(Pdf, "_blank", "noopener,noreferrer")}
           fullWidth={isSmallScreen}
           sx={{ paddingInline: 8, flexGrow: 1 }}
         >

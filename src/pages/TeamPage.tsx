@@ -41,28 +41,28 @@ export const TeamPage = () => {
       text: "Erzieher Krippe, ein tolles Schlagwort",
       img: PortraitMartin,
     },
-    {
-      color: "BROWN",
-      headline: "Nick",
-      text: "Erzieher Krippe, ein tolles Schlagwort",
-      img: PortraitNick,
-    },
+    // {
+    //   color: "BROWN",
+    //   headline: "Nick",
+    //   text: "Erzieher Kindergarten, ein tolles Schlagwort",
+    //   img: PortraitNick,
+    // },
     {
       color: "RED",
       headline: "Lydia",
-      text: "Erzieherin Krippe, ein tolles Schlagwort",
+      text: "Erzieherin Kindergarten, ein tolles Schlagwort",
       img: PortraitLydia,
     },
     {
       color: "PURPLE",
       headline: "Enrico",
-      text: "Erzieher Krippe, ein tolles Schlagwort",
+      text: "Erzieher Kindergarten, ein tolles Schlagwort",
       img: PortraitEnrico,
     },
     {
       color: "BLUE",
       headline: "Janine",
-      text: "Erzieherin Krippe, ein tolles Schlagwort",
+      text: "Erzieherin Kindergarten, ein tolles Schlagwort",
       img: PortraitJanine,
     },
   ];

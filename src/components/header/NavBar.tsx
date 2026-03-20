@@ -2,6 +2,11 @@ import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { NavItem } from "./NavItem";
 import { motion } from "framer-motion";
 
+interface NavItem {
+  sectionId: string;
+  label: string;
+  hasButtonStyle?: boolean;
+}
 interface NavBarProps {
   onClickNavItem?: () => void;
 }
@@ -25,7 +30,7 @@ export const NavBar = ({ onClickNavItem }: NavBarProps) => {
     }),
   };
 
-  const navItems = [
+  const navItems: NavItem[] = [
     ...(isSmallScreen ? [{ sectionId: "home", label: "Home" }] : []),
     { sectionId: "concept", label: "Pädagogisches Konzept" },
     { sectionId: "team", label: "Team" },

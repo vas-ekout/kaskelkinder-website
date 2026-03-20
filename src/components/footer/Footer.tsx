@@ -1,14 +1,36 @@
+import CloseIcon from "@mui/icons-material/Close";
+
 import {
   Box,
+  Dialog,
+  DialogContent,
+  DialogTitle,
   Divider,
+  IconButton,
+  styled,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import { useGetPagePadding } from "../../hooks/useGetPagePadding";
 import HeaderBg from "../../assets/imgs/header-bg.png";
+import { useState } from "react";
+
+const StyledTypography = styled(Typography)(() => ({
+  lineHeight: 1.5,
+  marginBottom: 0,
+}));
+
+const StyledHeadline = styled(Typography)(() => ({
+  fontWeight: 700,
+  lineHeight: 1.5,
+  marginBottom: 0,
+  marginTop: 16,
+}));
 
 export const Footer = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const { pagePadding } = useGetPagePadding();
   const { breakpoints } = useTheme();
   const isSmallScreen = useMediaQuery(breakpoints.down("sm"));
@@ -60,9 +82,51 @@ export const Footer = () => {
           © 2026 Kinderladen Kaskelkinder e.V.
         </Typography>
         {!isSmallScreen && <Divider orientation="vertical" flexItem />}
-        <Typography variant="subtitle2" sx={footerTextSx}>
-          Impressum / Datenschutzerklärung
+        <Typography
+          variant="subtitle2"
+          sx={{ ...footerTextSx, cursor: "pointer" }}
+          onClick={() => setIsOpen(true)}
+        >
+          Impressum
         </Typography>
+
+        <Dialog
+          fullWidth
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          slotProps={{ backdrop: { sx: { filter: "blur(4px)" } } }}
+        >
+          <IconButton
+            size="small"
+            sx={{ position: "absolute", top: 8, right: 8 }}
+            onClick={() => setIsOpen(false)}
+          >
+            <CloseIcon fontSize="inherit" />
+          </IconButton>
+          <DialogTitle variant="h5">Impressum / Datenschutz</DialogTitle>
+          <DialogContent>
+            <StyledHeadline>Kinderladen Kaskelkinder e.V.</StyledHeadline>
+            <StyledTypography>Türrschmidtstraße 33</StyledTypography>
+            <StyledTypography>10317 Berlin </StyledTypography>
+            <StyledTypography>kontakt@kaskelkinder.de</StyledTypography>
+            <StyledTypography>Vereinsregister-Nr.: VR 30673 B</StyledTypography>
+
+            <StyledHeadline>Vorstand</StyledHeadline>
+            <StyledTypography>E-Kathrin, Carsten, Jule</StyledTypography>
+
+            <StyledHeadline>Bevollmächtigte Vertreter:</StyledHeadline>
+            <StyledTypography>Kinderladen-Team Krippe</StyledTypography>
+            <StyledTypography>
+              Vanessa, Tobi, Eike, Martin (Azubi)
+            </StyledTypography>
+
+            <StyledHeadline>Bevollmächtigte Vertreter:</StyledHeadline>
+            <StyledTypography>
+              Kinderladen-Team Elementarbereich
+            </StyledTypography>
+            <StyledTypography>Janine, Enrico, Lydia</StyledTypography>
+          </DialogContent>
+        </Dialog>
       </Box>
     </Box>
   );
