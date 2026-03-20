@@ -5,7 +5,6 @@ import PortraitEnrico from "../assets/imgs/portrait-enrico.jpg";
 import PortraitJanine from "../assets/imgs/portrait-janine.jpg";
 import PortraitLydia from "../assets/imgs/portrait-lydia.jpg";
 import PortraitMartin from "../assets/imgs/portrait-martin.jpg";
-import PortraitNick from "../assets/imgs/portrait-nick.jpg";
 import PortraitTobi from "../assets/imgs/portrait-tobi.jpg";
 import PortraitVanessa from "../assets/imgs/portrait-vanessa.jpg";
 

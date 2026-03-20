@@ -1,10 +1,4 @@
-import {
-  Box,
-  Typography,
-  useMediaQuery,
-  useTheme,
-  type SxProps,
-} from "@mui/material";
+import { Box, Typography, type SxProps } from "@mui/material";
 
 interface SectionImageHeaderProps {
   headline: string;
@@ -18,23 +12,23 @@ export const SectionImageHeader = ({
   imgSrc,
   isLargeImg,
 }: SectionImageHeaderProps) => {
-  const { breakpoints, palette } = useTheme();
-  const isLargeScreen = useMediaQuery(breakpoints.between("lg", "xl"));
-  const isMediumScreen = useMediaQuery(breakpoints.between("md", "lg"));
-  const isSmallScreen = useMediaQuery(breakpoints.between("sm", "md"));
-  const isXsScreen = useMediaQuery(breakpoints.between("xs", "sm"));
+  // const { breakpoints } = useTheme();
+  // const isLargeScreen = useMediaQuery(breakpoints.between("lg", "xl"));
+  // const isMediumScreen = useMediaQuery(breakpoints.between("md", "lg"));
+  // const isSmallScreen = useMediaQuery(breakpoints.between("sm", "md"));
+  // const isXsScreen = useMediaQuery(breakpoints.between("xs", "sm"));
 
-  const headlineWords = headline.split(" ");
+  // const headlineWords = headline.split(" ");
 
-  const sizeMultiplier: number = (() => {
-    if (isLargeScreen) return 60;
-    if (isMediumScreen) return 40;
-    if (isSmallScreen) return 20;
-    if (isXsScreen) return -40;
-    return 60;
-  })();
+  // const sizeMultiplier: number = (() => {
+  //   if (isLargeScreen) return 60;
+  //   if (isMediumScreen) return 40;
+  //   if (isSmallScreen) return 20;
+  //   if (isXsScreen) return -40;
+  //   return 60;
+  // })();
 
-  const randomSize = () => Math.floor(Math.random() * 200) + sizeMultiplier;
+  // const randomSize = () => Math.floor(Math.random() * 200) + sizeMultiplier;
 
   // return imgSrc ? (
   //   <>

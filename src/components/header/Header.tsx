@@ -3,7 +3,6 @@ import KaskelLogo from "../../assets/imgs/logo_kaskelkinder_300x200.png";
 import HeaderBg from "../../assets/imgs/header-bg-small.png";
 import { Navigation } from "./Navigation";
 import { useGetPagePadding } from "../../hooks/useGetPagePadding";
-import { NavBar } from "./NavBar";
 
 export const Header = () => {
   const { pagePadding } = useGetPagePadding();
