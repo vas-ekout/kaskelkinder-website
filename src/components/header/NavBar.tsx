@@ -1,4 +1,4 @@
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Box, useMediaQuery, useTheme, type SxProps } from "@mui/material";
 import { NavItem } from "./NavItem";
 import { motion } from "framer-motion";
 
@@ -9,9 +9,10 @@ interface NavItem {
 }
 interface NavBarProps {
   onClickNavItem?: () => void;
+  sx?: SxProps;
 }
 
-export const NavBar = ({ onClickNavItem }: NavBarProps) => {
+export const NavBar = ({ onClickNavItem, sx }: NavBarProps) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("lg"));
@@ -53,6 +54,7 @@ export const NavBar = ({ onClickNavItem }: NavBarProps) => {
         justifyContent: isSmallScreen ? "space-start" : "flex-end",
         gap: isSmallScreen ? 4 : isMediumScreen ? 2.25 : 6,
         textAlign: "center",
+        ...sx,
       }}
     >
       {navItems.map((item, index) => (

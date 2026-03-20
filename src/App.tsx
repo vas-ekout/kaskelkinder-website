@@ -34,9 +34,9 @@ const App = () => {
 
   return (
     <CssBaseline>
-      <PageWrapper className="page-wrapper">
+      <PageWrapper className="page-wrapper" id="home">
         <ScrollToTopButton />
-        <Header id="home" />
+        <Header />
         <MainContainer>
           <section>
             <HomePage />

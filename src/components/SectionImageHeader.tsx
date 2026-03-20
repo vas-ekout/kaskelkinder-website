@@ -30,12 +30,11 @@ export const SectionImageHeader = ({
     if (isLargeScreen) return 60;
     if (isMediumScreen) return 40;
     if (isSmallScreen) return 20;
-    if (isXsScreen) return -60;
+    if (isXsScreen) return -40;
     return 60;
   })();
 
   const randomSize = () => Math.floor(Math.random() * 200) + sizeMultiplier;
-  console.log(randomSize());
 
   // return imgSrc ? (
   //   <>
