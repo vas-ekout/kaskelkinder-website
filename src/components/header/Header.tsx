@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { alpha, Box, useTheme } from "@mui/material";
 import KaskelLogo from "../../assets/imgs/logo_kaskelkinder_300x200.png";
 import HeaderBg from "../../assets/imgs/header-bg.png";
 import { Navigation } from "./Navigation";
@@ -10,13 +10,18 @@ interface HeaderProps {
 
 export const Header = ({ id }: HeaderProps) => {
   const { pagePadding } = useGetPagePadding();
+  const { palette } = useTheme();
 
   return (
     <Box
       id={id}
       component="header"
       sx={{
-        position: "relative",
+        position: "sticky",
+        top: 0,
+        left: 0,
+        zIndex: 100,
+        background: `linear-gradient(${palette.background.default} 50%, ${alpha(palette.background.default, 0)})`,
         width: "100%",
         height: 172,
         paddingInline: pagePadding,

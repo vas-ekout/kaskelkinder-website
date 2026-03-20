@@ -98,12 +98,12 @@ export const Footer = () => {
         >
           <IconButton
             size="small"
-            sx={{ position: "absolute", top: 8, right: 8 }}
+            sx={{ position: "absolute", top: 20, right: 20 }}
             onClick={() => setIsOpen(false)}
           >
             <CloseIcon fontSize="inherit" />
           </IconButton>
-          <DialogTitle variant="h5">Impressum / Datenschutz</DialogTitle>
+          <DialogTitle variant="h5">Impressum</DialogTitle>
           <DialogContent>
             <StyledHeadline>Kinderladen Kaskelkinder e.V.</StyledHeadline>
             <StyledTypography>Türrschmidtstraße 33</StyledTypography>
@@ -112,19 +112,25 @@ export const Footer = () => {
             <StyledTypography>Vereinsregister-Nr.: VR 30673 B</StyledTypography>
 
             <StyledHeadline>Vorstand</StyledHeadline>
-            <StyledTypography>E-Kathrin, Carsten, Jule</StyledTypography>
+            <StyledTypography>Carsten, Florian, Jule, Till</StyledTypography>
 
             <StyledHeadline>Bevollmächtigte Vertreter:</StyledHeadline>
             <StyledTypography>Kinderladen-Team Krippe</StyledTypography>
             <StyledTypography>
-              Vanessa, Tobi, Eike, Martin (Azubi)
+              Eike, Martin (Azubi), Tobi, Vanessa
             </StyledTypography>
 
             <StyledHeadline>Bevollmächtigte Vertreter:</StyledHeadline>
             <StyledTypography>
               Kinderladen-Team Elementarbereich
             </StyledTypography>
-            <StyledTypography>Janine, Enrico, Lydia</StyledTypography>
+            <StyledTypography>Enrico, Janine, Lydia, Malwina</StyledTypography>
+
+            <StyledHeadline>Website Design & Entwicklung</StyledHeadline>
+            <StyledTypography>Vassilios Ekoutsidis</StyledTypography>
+
+            <StyledHeadline>Fotos</StyledHeadline>
+            <StyledTypography>www.kalz-fotografie.de</StyledTypography>
           </DialogContent>
         </Dialog>
       </Box>

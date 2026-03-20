@@ -25,27 +25,24 @@ export const InitiativePage = () => {
   const isSmallScreen = useMediaQuery(breakpoints.down("md"));
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: 6 }}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 8 }}>
       <SectionImageHeader
         headline="Unsere Eltern-Initiative"
         imgSrc={InitiativeImg}
       />
       <Box>
-        <Typography variant="body1" sx={{ marginBottom: 0 }}>
+        <Typography variant="subtitle1" sx={{ marginBottom: 0 }}>
           Die Suche nach dem richtigen Kitaplatz in Berlin kann eine echte
           Herausforderung sein. Auch wir, eine Gruppe engagierter Eltern,
           standen vor dieser Situation. Doch aus dieser Not heraus entstand im
-          Jahr 20XX eine gemeinsame Vision.
+          Jahr 20XX eine gemeinsame Vision. Was als Initiative von wenigen
+          begann, hat sich zu einer starken Gemeinschaft von inzwischen über 30
+          engagierten Eltern entwickelt.{" "}
+          <Typography variant="subtitle1" component="span" fontWeight={500}>
+            Unser klares Ziel: eine ganz besondere Kita für unseren Nachwuchs.
+          </Typography>
         </Typography>
       </Box>
-
-      <Typography variant="subtitle1">
-        Was als Initiative von wenigen begann, hat sich zu einer starken
-        Gemeinschaft von inzwischen über 30 engagierten Eltern entwickelt.{" "}
-        <Typography variant="subtitle1" component="span" fontWeight={500}>
-          Unser klares Ziel: eine ganz besondere Kita für unseren Nachwuchs.
-        </Typography>
-      </Typography>
 
       <Box>
         <Typography variant="body1">

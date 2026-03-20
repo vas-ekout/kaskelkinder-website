@@ -69,7 +69,7 @@ export const TeamPage = () => {
   teamItems.sort((a, b) => a.headline.localeCompare(b.headline));
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: 6 }}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 8 }}>
       <SectionImageHeader headline="Unser Team" imgSrc={TeamImg} />
 
       <Typography variant="subtitle1">

@@ -9,10 +9,15 @@ export const ConceptPage = () => {
         headline="Unser pädagogisches Konzept"
         imgSrc={ConceptImg}
       />
-      <Typography variant="subtitle1">
+      <Typography variant="subtitle1" marginBottom={0}>
         Uns ist es wichtig gemeinsam mit allen am Erziehungs- und
         Bildungsprozess beteiligten Personen einen{" "}
-        <Typography variant="subtitle1" component="span" fontWeight={500}>
+        <Typography
+          variant="subtitle1"
+          component="span"
+          fontWeight={500}
+          marginBottom={0}
+        >
           sicheren, adultismuskritischen und diskriminerungsfreien Raum zu
           schaffen!
         </Typography>{" "}
@@ -20,7 +25,7 @@ export const ConceptPage = () => {
       </Typography>
       <Box>
         <Typography variant="h6">Pädagogische Ziele</Typography>
-        <Typography variant="body1">
+        <Typography variant="body1" marginBottom={0}>
           Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben
           da sind und wie sie aussehen. Manchmal benutzt man Worte wie
           Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.
@@ -31,9 +36,10 @@ export const ConceptPage = () => {
           zu testen. In Lateinisch sieht zum Beispiel fast jede Schrift gut aus.
           Quod erat demonstrandum.
         </Typography>
-
+      </Box>
+      <Box>
         <Typography variant="h6">Wir sehen das Kind als</Typography>
-        <Typography variant="body1">
+        <Typography variant="body1" marginBottom={0}>
           Dies ist ein Typoblindtext. Seit 1975 fehlen in den meisten Testtexten
           die Zahlen, weswegen nach TypoGb. 204 § ab dem Jahr 2034 Zahlen in 86
           der Texte zur Pflicht werden. Nichteinhaltung wird mit bis zu 245 €

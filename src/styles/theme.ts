@@ -36,9 +36,9 @@ const lightTheme = createTheme({
   typography: {
     fontFamily: '"Vend Sans", sans-serif',
     fontWeightRegular: 400,
-    fontSize: 16,
-    body1: { fontSize: 16, lineHeight: 1.65, marginBottom: 24 },
-    body2: { fontSize: 14, lineHeight: 1.5, textAlign: "center" },
+    fontSize: 18,
+    body1: { fontSize: 18, lineHeight: 1.65, marginBottom: 24 },
+    body2: { fontSize: 16, lineHeight: 1.5, textAlign: "center" },
     h1: {
       fontFamily: '"Amatic SC", sans-serif',
       fontWeight: 700,
@@ -50,7 +50,7 @@ const lightTheme = createTheme({
       textAlign: "center",
 
       [`@media (min-width:${breakpoints.xs}px)`]: {
-        fontSize: 48,
+        fontSize: 54,
         WebkitTextStroke: `1px ${primary.light}`,
       },
       [`@media (min-width:${breakpoints.sm}px)`]: {
@@ -93,12 +93,13 @@ const lightTheme = createTheme({
       //   fontSize: 90,
       // },
     },
-    h6: { fontSize: 16, fontWeight: 600, lineHeight: 1.65, marginBottom: 8 },
+    h6: { fontSize: 18, fontWeight: 600, lineHeight: 1.65, marginBottom: 8 },
     subtitle1: {
-      textAlign: "center",
-      fontSize: 24,
+      textAlign: "left",
+      fontSize: 22,
       fontWeight: 300,
       lineHeight: 1.6,
+      marginBottom: 16,
     },
     subtitle2: {
       fontFamily: '"Amatic SC", sans-serif',

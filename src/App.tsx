@@ -16,6 +16,10 @@ const PageWrapper = styled("div")(() => ({
   margin: "0 auto",
 }));
 
+const StyledDivider = styled(Divider)(() => ({
+  marginTop: -14,
+}));
+
 const App = () => {
   const { pagePadding } = useGetPagePadding();
 
@@ -37,23 +41,23 @@ const App = () => {
           <section>
             <HomePage />
           </section>
-          <Divider />
+          <StyledDivider />
           <section id="concept">
             <ConceptPage />
           </section>
-          <Divider />
+          <StyledDivider />
           <section id="team">
             <TeamPage />
           </section>
-          <Divider />
+          <StyledDivider />
           <section id="facilities">
             <FacilitiesPage />
           </section>
-          <Divider />
+          <StyledDivider />
           <section id="parents-initiative">
             <InitiativePage />
           </section>
-          <Divider />
+          <StyledDivider />
           <section id="contact">
             <ContactPage />
           </section>

@@ -40,17 +40,20 @@ export const HomePage = () => {
         isLargeImg
       />
       <Box>
-        <Typography variant="h6">Liebe Eltern,</Typography>
-        <Typography variant="body1">
+        <Typography variant="subtitle1" fontWeight={500}>
+          Liebe Eltern,
+        </Typography>
+        <Typography variant="subtitle1" marginBottom={0}>
           herzlich willkommen in unserem Kinderladen im lebendigen Kaskelkiez in
           Berlin-Lichtenberg! Wir wissen, wie wichtig die ersten Jahre im Leben
           Ihres Kindes sind. Deshalb begleiten wir jedes Kind im Alter von 1 bis
           6 Jahren mit viel Herz und Engagement auf seinem ganz persönlichen Weg
           – hin zu einem selbstbewussten, neugierigen und kompetenten kleinen
-          Menschen.
-        </Typography>
-        <Typography variant="h6" sx={{ mb: 0 }}>
-          Was uns dabei besonders am Herzen liegt, und unsere Kita auszeichnet:
+          Menschen.{" "}
+          <Typography variant="subtitle1" fontWeight={500} component="span">
+            Was uns dabei besonders am Herzen liegt, und unsere Kita
+            auszeichnet:
+          </Typography>
         </Typography>
       </Box>
 
@@ -71,10 +74,9 @@ export const HomePage = () => {
           />
         ))}
       </Box>
-
-      <Typography variant="subtitle1">
+      <Typography variant="body1" marginBottom={0}>
         Unser Laden ist{" "}
-        <Typography variant="subtitle1" component="span" fontWeight={500}>
+        <Typography variant="body1" component="span" fontWeight={600}>
           montags bis freitags von 8.00 bis 17.00{" "}
         </Typography>
         geöffnet. Wir laden Sie herzlich ein, uns und unsere familiäre

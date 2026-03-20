@@ -30,7 +30,13 @@ import Gallery29 from "../assets/imgs/gallery/29.jpg";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { Box, IconButton, Typography } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
 import { SectionImageHeader } from "../components/SectionImageHeader";
@@ -76,6 +82,9 @@ export const FacilitiesPage = () => {
   });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+  const { breakpoints } = useTheme();
+  const isXsScreen = useMediaQuery(breakpoints.down("sm"));
+
   const onThumbClick = useCallback(
     (index: number) => {
       if (!emblaApi || !thumbApi) return;
@@ -102,21 +111,37 @@ export const FacilitiesPage = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: 6 }}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 8 }}>
       <SectionImageHeader headline="Unsere Räumlichkeiten" />
 
       <Box>
         {/* Main carousel */}
         <Box sx={{ position: "relative", mb: 1 }}>
-          <Box ref={emblaRef} sx={{ overflow: "hidden", borderRadius: 1 }}>
-            <Box sx={{ display: "flex" }}>
+          <Box
+            ref={emblaRef}
+            sx={{ overflow: "hidden", borderRadius: 1, maxHeight: "74vh" }}
+          >
+            <Box sx={{ display: "flex", maxHeight: "74vh" }}>
               {slides.map((slide) => (
-                <Box key={slide.alt} sx={{ flex: "0 0 100%", minWidth: 0 }}>
+                <Box
+                  key={slide.alt}
+                  sx={{
+                    flex: "0 0 100%",
+                    minWidth: 0,
+                    maxHeight: "74vh",
+                  }}
+                >
                   <Box
                     component="img"
                     src={slide.src}
                     alt={slide.alt}
-                    sx={{ width: "100%", display: "block", objectFit: "cover" }}
+                    sx={{
+                      maxHeight: "74vh",
+                      width: "100%",
+                      display: "block",
+                      objectFit: "cover",
+                      aspectRatio: isXsScreen ? "4/3" : "",
+                    }}
                   />
                 </Box>
               ))}
@@ -181,7 +206,7 @@ export const FacilitiesPage = () => {
         </Box>
       </Box>
 
-      <Typography variant="subtitle1">
+      <Typography variant="subtitle1" marginBottom={0}>
         <Typography variant="subtitle1" component="span" fontWeight={500}>
           Wir betreuen insgesamt 30 Kinder, die in zwei Gruppen aufgeteilt sind:
         </Typography>{" "}
