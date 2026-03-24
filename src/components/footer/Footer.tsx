@@ -49,8 +49,6 @@ export const Footer = () => {
   }, []);
   if (!data) return null;
 
-  console.log(data);
-
   const footerTextSx = { fontSize: isSmallScreen ? 18 : 20 };
 
   return (
