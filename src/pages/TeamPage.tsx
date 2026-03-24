@@ -1,85 +1,46 @@
 import TeamImg from "../assets/imgs/team.jpg";
 import { Box, Typography } from "@mui/material";
-import PortraitEike from "../assets/imgs/portrait-eike.jpg";
-import PortraitEnrico from "../assets/imgs/portrait-enrico.jpg";
-import PortraitJanine from "../assets/imgs/portrait-janine.jpg";
-import PortraitLydia from "../assets/imgs/portrait-lydia.jpg";
-import PortraitMartin from "../assets/imgs/portrait-martin.jpg";
-import PortraitTobi from "../assets/imgs/portrait-tobi.jpg";
-import PortraitVanessa from "../assets/imgs/portrait-vanessa.jpg";
 
 import {
   TeamItemCard,
   type TeamItemCardProps,
 } from "../components/TeamItemCard";
 import { SectionImageHeader } from "../components/SectionImageHeader";
+import { PortableText, type PortableTextBlock } from "@portabletext/react";
+import { useEffect, useState } from "react";
+import { fetchTeamPageData, urlFor } from "../sanityClient";
+
+type TeamPageData = {
+  headline: string;
+  introText: PortableTextBlock[];
+  teamCards: TeamItemCardProps[];
+};
 
 export const TeamPage = () => {
-  const teamItems: TeamItemCardProps[] = [
-    {
-      color: "RED",
-      headline: "Vanessa",
-      text: "Erzieherin Krippe, ein tolles Schlagwort",
-      img: PortraitVanessa,
-    },
-    {
-      color: "PURPLE",
-      headline: "Tobi",
-      text: "Erzieher Krippe, Morgenkreis-Master",
-      img: PortraitTobi,
-    },
-    {
-      color: "BLUE",
-      headline: "Eike",
-      text: "Erzieher Krippe, ein tolles Schlagwort",
-      img: PortraitEike,
-    },
-    {
-      color: "YELLOW",
-      headline: "Martin",
-      text: "Erzieher Krippe, ein tolles Schlagwort",
-      img: PortraitMartin,
-    },
-    // {
-    //   color: "BROWN",
-    //   headline: "Nick",
-    //   text: "Erzieher Kindergarten, ein tolles Schlagwort",
-    //   img: PortraitNick,
-    // },
-    {
-      color: "RED",
-      headline: "Lydia",
-      text: "Erzieherin Kindergarten, ein tolles Schlagwort",
-      img: PortraitLydia,
-    },
-    {
-      color: "PURPLE",
-      headline: "Enrico",
-      text: "Erzieher Kindergarten, ein tolles Schlagwort",
-      img: PortraitEnrico,
-    },
-    {
-      color: "BLUE",
-      headline: "Janine",
-      text: "Erzieherin Kindergarten, ein tolles Schlagwort",
-      img: PortraitJanine,
-    },
-  ];
-  teamItems.sort((a, b) => a.headline.localeCompare(b.headline));
+  const [data, setData] = useState<TeamPageData | null>(null);
+  useEffect(() => {
+    fetchTeamPageData().then(setData);
+  }, []);
+  if (!data) return null;
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 8 }}>
-      <SectionImageHeader headline="Unser Team" imgSrc={TeamImg} />
-
-      <Typography variant="subtitle1">
-        Unser Team setzt sich zusammen aus (Inklusion-) Erzieher:innen,
-        Kindheitspädagog:innen, einem Auszubildenden sowie einem Pool aus
-        Springer:innen und Aushelfenden.{" "}
-        <Typography variant="subtitle1" component="span" fontWeight={500}>
-          Insgesamt sind 8 festangestellte Fachkräfte im Laden – je Gruppe 4.
-        </Typography>
-      </Typography>
-
+      <SectionImageHeader headline={data.headline} imgSrc={TeamImg} />
+      <PortableText
+        value={data.introText}
+        components={{
+          block: {
+            normal: ({ children }) => (
+              <Typography variant="subtitle1">{children}</Typography>
+            ),
+          },
+          marks: {
+            strong: ({ children }) => (
+              <span style={{ fontWeight: 500 }}>{children}</span>
+            ),
+          },
+        }}
+      />
       <Box
         sx={{
           mt: 8,
@@ -90,13 +51,13 @@ export const TeamPage = () => {
           rowGap: { xs: 12, sm: 14 },
         }}
       >
-        {teamItems.map((item) => (
+        {data.teamCards.map((item) => (
           <Box key={item.headline} sx={{ width: 180 }}>
             <TeamItemCard
               color={item.color}
               headline={item.headline}
               text={item.text}
-              img={item.img}
+              portraitImage={urlFor(item.portraitImage)}
             />
           </Box>
         ))}

@@ -9,13 +9,13 @@ export interface TeamItemCardProps {
   color: "RED" | "PURPLE" | "BLUE" | "YELLOW" | "BROWN";
   headline: string;
   text: string;
-  img: string;
+  portraitImage: string;
 }
 
 export const TeamItemCard = ({
   color,
   headline,
-  img,
+  portraitImage,
   text,
 }: TeamItemCardProps) => {
   const stainSx = () => {
@@ -54,7 +54,7 @@ export const TeamItemCard = ({
           flexShrink: 0,
           width: 130,
           height: 130,
-          backgroundImage: `url(${img})`,
+          backgroundImage: `url(${portraitImage})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           borderRadius: "1000%",

@@ -14,11 +14,13 @@ import {
 } from "@mui/material";
 import { useGetPagePadding } from "../../hooks/useGetPagePadding";
 import HeaderBg from "../../assets/imgs/header-bg.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchFooterImpressumData } from "../../sanityClient";
 
 const StyledTypography = styled(Typography)(() => ({
   lineHeight: 1.5,
   marginBottom: 0,
+  whiteSpace: "pre-line",
 }));
 
 const StyledHeadline = styled(Typography)(() => ({
@@ -28,12 +30,26 @@ const StyledHeadline = styled(Typography)(() => ({
   marginTop: 16,
 }));
 
+type FooterImpressumData = {
+  copyright: string;
+  impressumHeadline: string;
+  impressumSection: { sectionHeadline: string; sectionParagraph: string }[];
+};
+
 export const Footer = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { pagePadding } = useGetPagePadding();
   const { breakpoints } = useTheme();
   const isSmallScreen = useMediaQuery(breakpoints.down("sm"));
+
+  const [data, setData] = useState<FooterImpressumData | null>(null);
+  useEffect(() => {
+    fetchFooterImpressumData().then(setData);
+  }, []);
+  if (!data) return null;
+
+  console.log(data);
 
   const footerTextSx = { fontSize: isSmallScreen ? 18 : 20 };
 
@@ -79,7 +95,7 @@ export const Footer = () => {
         }}
       >
         <Typography variant="subtitle2" sx={footerTextSx}>
-          © 2026 Kinderladen Kaskelkinder e.V.
+          {data.copyright}
         </Typography>
         {!isSmallScreen && <Divider orientation="vertical" flexItem />}
         <Typography
@@ -87,7 +103,7 @@ export const Footer = () => {
           sx={{ ...footerTextSx, cursor: "pointer" }}
           onClick={() => setIsOpen(true)}
         >
-          Impressum
+          {data.impressumHeadline}
         </Typography>
 
         <Dialog
@@ -103,34 +119,14 @@ export const Footer = () => {
           >
             <CloseIcon fontSize="inherit" />
           </IconButton>
-          <DialogTitle variant="h5">Impressum</DialogTitle>
+          <DialogTitle variant="h5">{data.impressumHeadline}</DialogTitle>
           <DialogContent>
-            <StyledHeadline>Kinderladen Kaskelkinder e.V.</StyledHeadline>
-            <StyledTypography>Türrschmidtstraße 33</StyledTypography>
-            <StyledTypography>10317 Berlin </StyledTypography>
-            <StyledTypography>kontakt@kaskelkinder.de</StyledTypography>
-            <StyledTypography>Vereinsregister-Nr.: VR 30673 B</StyledTypography>
-
-            <StyledHeadline>Vorstand</StyledHeadline>
-            <StyledTypography>Carsten, Florian, Jule, Till</StyledTypography>
-
-            <StyledHeadline>Bevollmächtigte Vertreter:</StyledHeadline>
-            <StyledTypography>Kinderladen-Team Krippe</StyledTypography>
-            <StyledTypography>
-              Eike, Martin (Azubi), Tobi, Vanessa
-            </StyledTypography>
-
-            <StyledHeadline>Bevollmächtigte Vertreter:</StyledHeadline>
-            <StyledTypography>
-              Kinderladen-Team Elementarbereich
-            </StyledTypography>
-            <StyledTypography>Enrico, Janine, Lydia, Malwina</StyledTypography>
-
-            <StyledHeadline>Website Design & Entwicklung</StyledHeadline>
-            <StyledTypography>Vassilios Ekoutsidis</StyledTypography>
-
-            <StyledHeadline>Fotos</StyledHeadline>
-            <StyledTypography>www.kalz-fotografie.de</StyledTypography>
+            {data.impressumSection.map((item) => (
+              <>
+                <StyledHeadline>{item.sectionHeadline}</StyledHeadline>
+                <StyledTypography>{item.sectionParagraph}</StyledTypography>
+              </>
+            ))}
           </DialogContent>
         </Dialog>
       </Box>

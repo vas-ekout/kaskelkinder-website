@@ -1,57 +1,64 @@
 import { Box, Typography } from "@mui/material";
 import { SectionImageHeader } from "../components/SectionImageHeader";
 import ConceptImg from "../assets/imgs/concept.jpg";
+import { useEffect, useState } from "react";
+import { fetchConceptPageData } from "../sanityClient";
+import { PortableText, type PortableTextBlock } from "@portabletext/react";
+
+type ConceptPageData = {
+  headline: string;
+  introText: PortableTextBlock[];
+  sections: { headline: string; body: PortableTextBlock[] }[];
+};
 
 export const ConceptPage = () => {
+  const [data, setData] = useState<ConceptPageData | null>(null);
+  useEffect(() => {
+    fetchConceptPageData().then(setData);
+  }, []);
+  if (!data) return null;
+
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 8 }}>
-      <SectionImageHeader
-        headline="Unser pädagogisches Konzept"
-        imgSrc={ConceptImg}
+      <SectionImageHeader headline={data.headline} imgSrc={ConceptImg} />
+      <PortableText
+        value={data.introText}
+        components={{
+          block: {
+            normal: ({ children }) => (
+              <Typography variant="subtitle1">{children}</Typography>
+            ),
+          },
+          marks: {
+            strong: ({ children }) => (
+              <span style={{ fontWeight: 500 }}>{children}</span>
+            ),
+          },
+        }}
       />
-      <Typography variant="subtitle1" marginBottom={0}>
-        Uns ist es wichtig gemeinsam mit allen am Erziehungs- und
-        Bildungsprozess beteiligten Personen einen{" "}
-        <Typography
-          variant="subtitle1"
-          component="span"
-          fontWeight={500}
-          marginBottom={0}
-        >
-          sicheren, adultismuskritischen und diskriminerungsfreien Raum zu
-          schaffen!
-        </Typography>{" "}
-        Dafür setzen wir uns folgende pädagogischen Ziele.
-      </Typography>
-      <Box>
-        <Typography variant="h6">Pädagogische Ziele</Typography>
-        <Typography variant="body1" marginBottom={0}>
-          Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben
-          da sind und wie sie aussehen. Manchmal benutzt man Worte wie
-          Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.
-          Manchmal Sätze, die alle Buchstaben des Alphabets enthalten - man
-          nennt diese Sätze »Pangrams«. Sehr bekannt ist dieser: The quick brown
-          fox jumps over the lazy old dog. Oft werden in Typoblindtexte auch
-          fremdsprachige Satzteile eingebaut, um die Wirkung in anderen Sprachen
-          zu testen. In Lateinisch sieht zum Beispiel fast jede Schrift gut aus.
-          Quod erat demonstrandum.
-        </Typography>
-      </Box>
-      <Box>
-        <Typography variant="h6">Wir sehen das Kind als</Typography>
-        <Typography variant="body1" marginBottom={0}>
-          Dies ist ein Typoblindtext. Seit 1975 fehlen in den meisten Testtexten
-          die Zahlen, weswegen nach TypoGb. 204 § ab dem Jahr 2034 Zahlen in 86
-          der Texte zur Pflicht werden. Nichteinhaltung wird mit bis zu 245 €
-          oder 368 $ bestraft. Genauso wichtig in sind mittlerweile auch
-          Âçcèñtë, die in neueren Schriften aber fast immer enthalten sind. Ein
-          wichtiges aber schwierig zu integrierendes Feld sind
-          OpenType-Funktionalitäten. Je nach Software und Voreinstellungen
-          können eingebaute Kapitälchen, Kerning oder Ligaturen (sehr pfiffig)
-          nicht richtig dargestellt werden.Dies ist ein Typoblindtext. An ihm
-          kann man sehen, ob alle Buchstaben da sind und wie sie aussehen.
-          Manchmal benutzt man Worte wie Hamburgefonts.
-        </Typography>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+        {data.sections.map((section) => (
+          <Box>
+            {section.headline && (
+              <Typography variant="h6">{section.headline}</Typography>
+            )}
+            <PortableText
+              value={section.body}
+              components={{
+                block: {
+                  normal: ({ children }) => (
+                    <Typography variant="body1">{children}</Typography>
+                  ),
+                },
+                marks: {
+                  strong: ({ children }) => (
+                    <span style={{ fontWeight: 500 }}>{children}</span>
+                  ),
+                },
+              }}
+            />
+          </Box>
+        ))}
       </Box>
     </Box>
   );

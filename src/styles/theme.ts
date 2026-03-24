@@ -37,7 +37,7 @@ const lightTheme = createTheme({
     fontFamily: '"Vend Sans", sans-serif',
     fontWeightRegular: 400,
     fontSize: 18,
-    body1: { fontSize: 18, lineHeight: 1.65, marginBottom: 24 },
+    body1: { fontSize: 18, lineHeight: 1.65 },
     body2: { fontSize: 16, lineHeight: 1.5, textAlign: "center" },
     h1: {
       fontFamily: '"Amatic SC", sans-serif',
@@ -99,7 +99,7 @@ const lightTheme = createTheme({
       fontSize: 22,
       fontWeight: 300,
       lineHeight: 1.6,
-      marginBottom: 16,
+      // marginBottom: 16,
     },
     subtitle2: {
       fontFamily: '"Amatic SC", sans-serif',

@@ -2,60 +2,46 @@ import { Box, Typography } from "@mui/material";
 import { BenefitCard, type BenefitCardProps } from "../components/BenefitCard";
 import HomeImg from "../assets/imgs/home.jpg";
 import { SectionImageHeader } from "../components/SectionImageHeader";
+import { useEffect, useState } from "react";
+import { PortableText, type PortableTextBlock } from "@portabletext/react";
+import { fetchHomePageData } from "../sanityClient";
+
+type HomePageData = {
+  headline: string;
+  introText: PortableTextBlock[];
+  bodyText: PortableTextBlock[];
+  benefitCards: BenefitCardProps[];
+};
 
 export const HomePage = () => {
-  const benefitCards: BenefitCardProps[] = [
-    {
-      color: "RED",
-      headline: "Kleine Gruppen",
-      text: "Für eine individuelle und liebevolle Betreuung, bei der jedes Kind gesehen wird.",
-    },
-    {
-      color: "PURPLE",
-      headline: "Engagierte Fachkräfte",
-      text: "Ein Team, das mit Leidenschaft und Fachwissen die Entwicklung Ihres Kindes fördert.",
-    },
-    {
-      color: "BLUE",
-      headline: "Wöchentliche Ausflugstage",
-      text: "Um die Welt zu entdecken, spielerisch zu lernen und die Natur zu erleben.",
-    },
-    {
-      color: "YELLOW",
-      headline: "Frisches Bio-Essen",
-      text: "Eine gesunde und leckere Ernährung, die Kraft für den Tag gibt.",
-    },
-    {
-      color: "BROWN",
-      headline: "Und Vieles mehr",
-      text: "Denn wir schaffen einen Ort, an dem Ihr Kind lachen, spielen, lernen und sich rundum wohlfühlen kann.",
-    },
-  ];
+  const [data, setData] = useState<HomePageData | null>(null);
+  useEffect(() => {
+    fetchHomePageData().then(setData);
+  }, []);
+  if (!data) return null;
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 8 }}>
       <SectionImageHeader
-        headline="Wo kleine Entdecker groß werden"
+        headline={data.headline}
         imgSrc={HomeImg}
         isLargeImg
       />
-      <Box>
-        <Typography variant="subtitle1" fontWeight={500}>
-          Liebe Eltern,
-        </Typography>
-        <Typography variant="subtitle1" marginBottom={0}>
-          herzlich willkommen in unserem Kinderladen im lebendigen Kaskelkiez in
-          Berlin-Lichtenberg! Wir wissen, wie wichtig die ersten Jahre im Leben
-          Ihres Kindes sind. Deshalb begleiten wir jedes Kind im Alter von 1 bis
-          6 Jahren mit viel Herz und Engagement auf seinem ganz persönlichen Weg
-          – hin zu einem selbstbewussten, neugierigen und kompetenten kleinen
-          Menschen.{" "}
-          <Typography variant="subtitle1" fontWeight={500} component="span">
-            Was uns dabei besonders am Herzen liegt, und unsere Kita
-            auszeichnet:
-          </Typography>
-        </Typography>
-      </Box>
+      <PortableText
+        value={data.introText}
+        components={{
+          block: {
+            normal: ({ children }) => (
+              <Typography variant="subtitle1">{children}</Typography>
+            ),
+          },
+          marks: {
+            strong: ({ children }) => (
+              <span style={{ fontWeight: 500 }}>{children}</span>
+            ),
+          },
+        }}
+      />
 
       <Box
         sx={{
@@ -64,25 +50,30 @@ export const HomePage = () => {
           gap: { xs: 3, sm: 5 },
         }}
       >
-        {benefitCards.map((card) => (
+        {data.benefitCards.map((card) => (
           <BenefitCard
             key={card.color}
             color={card.color}
             headline={card.headline}
             text={card.text}
-            cardSx={{ height: "100%" }}
           />
         ))}
       </Box>
-      <Typography variant="body1" marginBottom={0}>
-        Unser Laden ist{" "}
-        <Typography variant="body1" component="span" fontWeight={600}>
-          montags bis freitags von 8.00 bis 17.00{" "}
-        </Typography>
-        geöffnet. Wir laden Sie herzlich ein, uns und unsere familiäre
-        Atmosphäre kennenzulernen. Wir freuen uns darauf, Sie und Ihr Kind bald
-        bei uns begrüßen zu dürfen!
-      </Typography>
+      <PortableText
+        value={data.bodyText}
+        components={{
+          block: {
+            normal: ({ children }) => (
+              <Typography variant="body1">{children}</Typography>
+            ),
+          },
+          marks: {
+            strong: ({ children }) => (
+              <span style={{ fontWeight: 600 }}>{children}</span>
+            ),
+          },
+        }}
+      />
     </Box>
   );
 };
