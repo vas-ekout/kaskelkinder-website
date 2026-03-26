@@ -1,4 +1,10 @@
-import { Box, Typography, type SxProps } from "@mui/material";
+import {
+  Box,
+  Typography,
+  useMediaQuery,
+  useTheme,
+  type SxProps,
+} from "@mui/material";
 
 interface SectionImageHeaderProps {
   headline: string;
@@ -12,11 +18,11 @@ export const SectionImageHeader = ({
   imgSrc,
   isLargeImg,
 }: SectionImageHeaderProps) => {
-  // const { breakpoints } = useTheme();
+  const { breakpoints } = useTheme();
   // const isLargeScreen = useMediaQuery(breakpoints.between("lg", "xl"));
   // const isMediumScreen = useMediaQuery(breakpoints.between("md", "lg"));
   // const isSmallScreen = useMediaQuery(breakpoints.between("sm", "md"));
-  // const isXsScreen = useMediaQuery(breakpoints.between("xs", "sm"));
+  const isXsScreen = useMediaQuery(breakpoints.between("xs", "sm"));
 
   // const headlineWords = headline.split(" ");
 
@@ -115,6 +121,7 @@ export const SectionImageHeader = ({
           sx={{
             width: "100%",
             height: isLargeImg ? "60vh" : 400,
+            maxHeight: isXsScreen ? 500 : "",
             minHeight: 400,
             objectFit: "cover",
             borderRadius: 1,

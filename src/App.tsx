@@ -36,6 +36,7 @@ const App = () => {
     <CssBaseline>
       <PageWrapper className="page-wrapper" id="home">
         <ScrollToTopButton />
+        {/* <Flyer /> */}
         <Header />
         <MainContainer>
           <section>
