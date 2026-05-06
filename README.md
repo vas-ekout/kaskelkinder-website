@@ -21,6 +21,3 @@ A website for **Kaskelkinder**, a parent-run childcare initiative (_Kinderladen_
 ## Status
 
 Currently in final content review — launching soon.
-
-💡 Drücke ? oder klicke auf ? in der Symbolleiste, um alle Shortcuts zu sehen
-✕
