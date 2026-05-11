@@ -4,6 +4,7 @@ import ConceptImg from "../assets/imgs/concept.jpg";
 import { useEffect, useState } from "react";
 import { fetchConceptPageData } from "../sanityClient";
 import { PortableText, type PortableTextBlock } from "@portabletext/react";
+import { StyledList, StyledListItem } from "./InitiativePage";
 
 type ConceptPageData = {
   headline: string;
@@ -53,6 +54,14 @@ export const ConceptPage = () => {
                 marks: {
                   strong: ({ children }) => (
                     <span style={{ fontWeight: 500 }}>{children}</span>
+                  ),
+                },
+                list: {
+                  bullet: ({ children }) => <StyledList>{children}</StyledList>,
+                },
+                listItem: {
+                  bullet: ({ children }) => (
+                    <StyledListItem>{children}</StyledListItem>
                   ),
                 },
               }}

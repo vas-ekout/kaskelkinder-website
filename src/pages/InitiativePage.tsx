@@ -17,13 +17,13 @@ import { useEffect, useState } from "react";
 import { fetchInitiativePageData } from "../sanityClient";
 import { PortableText, type PortableTextBlock } from "@portabletext/react";
 
-const StyledList = styled(List)(() => ({
+export const StyledList = styled(List)(() => ({
   listStyleType: "square",
   paddingLeft: 24,
   lineHeight: 1.25,
 }));
 
-const StyledListItem = styled(ListItem)(() => ({
+export const StyledListItem = styled(ListItem)(() => ({
   display: "list-item",
   paddingLeft: 8,
 }));
@@ -50,51 +50,66 @@ export const InitiativePage = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 8 }}>
       <SectionImageHeader headline={data.headline} imgSrc={InitiativeImg} />
-      <PortableText
-        value={data.introText}
-        components={{
-          block: {
-            normal: ({ children }) => (
-              <Typography variant="subtitle1">{children}</Typography>
-            ),
-          },
-          marks: {
-            strong: ({ children }) => (
-              <span style={{ fontWeight: 500 }}>{children}</span>
-            ),
-          },
-        }}
-      />
       <Box>
-        {data.sections.map((section) => (
-          <>
-            {section.headline && (
-              <Typography variant="h6">{section.headline}</Typography>
-            )}
-            <PortableText
-              value={section.body}
-              components={{
-                block: {
-                  normal: ({ children }) => (
-                    <Typography variant="body1">{children}</Typography>
-                  ),
-                },
-                marks: {
-                  strong: ({ children }) => (
-                    <span style={{ fontWeight: 500 }}>{children}</span>
-                  ),
-                },
-                list: {
-                  bullet: ({ children }) => <StyledList>{children}</StyledList>,
-                },
-                listItem: ({ children }) => (
-                  <StyledListItem>{children}</StyledListItem>
-                ),
-              }}
-            />
-          </>
-        ))}
+        <PortableText
+          value={data.introText}
+          components={{
+            block: {
+              normal: ({ children }) => (
+                <Typography variant="subtitle1">{children}</Typography>
+              ),
+            },
+            marks: {
+              strong: ({ children }) => (
+                <span style={{ fontWeight: 500 }}>{children}</span>
+              ),
+            },
+            list: {
+              bullet: ({ children }) => <StyledList>{children}</StyledList>,
+            },
+            listItem: {
+              bullet: ({ children }) => (
+                <StyledListItem>{children}</StyledListItem>
+              ),
+            },
+          }}
+        />
       </Box>
+
+      {data.sections && (
+        <Box>
+          {data.sections.map((section) => (
+            <>
+              {section.headline && (
+                <Typography variant="h6">{section.headline}</Typography>
+              )}
+              <PortableText
+                value={section.body}
+                components={{
+                  block: {
+                    normal: ({ children }) => (
+                      <Typography variant="body1">{children}</Typography>
+                    ),
+                  },
+                  marks: {
+                    strong: ({ children }) => (
+                      <span style={{ fontWeight: 500 }}>{children}</span>
+                    ),
+                  },
+                  list: {
+                    bullet: ({ children }) => (
+                      <StyledList>{children}</StyledList>
+                    ),
+                  },
+                  listItem: ({ children }) => (
+                    <StyledListItem>{children}</StyledListItem>
+                  ),
+                }}
+              />
+            </>
+          ))}
+        </Box>
+      )}
 
       <Box
         sx={{

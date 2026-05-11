@@ -26,21 +26,24 @@ export const TeamPage = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 8 }}>
       <SectionImageHeader headline={data.headline} imgSrc={TeamImg} />
-      <PortableText
-        value={data.introText}
-        components={{
-          block: {
-            normal: ({ children }) => (
-              <Typography variant="subtitle1">{children}</Typography>
-            ),
-          },
-          marks: {
-            strong: ({ children }) => (
-              <span style={{ fontWeight: 500 }}>{children}</span>
-            ),
-          },
-        }}
-      />
+      <Box>
+        <PortableText
+          value={data.introText}
+          components={{
+            block: {
+              normal: ({ children }) => (
+                <Typography variant="subtitle1">{children}</Typography>
+              ),
+            },
+            marks: {
+              strong: ({ children }) => (
+                <span style={{ fontWeight: 500 }}>{children}</span>
+              ),
+            },
+          }}
+        />
+      </Box>
+
       <Box
         sx={{
           mt: 8,

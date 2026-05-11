@@ -27,21 +27,23 @@ export const HomePage = () => {
         imgSrc={HomeImg}
         isLargeImg
       />
-      <PortableText
-        value={data.introText}
-        components={{
-          block: {
-            normal: ({ children }) => (
-              <Typography variant="subtitle1">{children}</Typography>
-            ),
-          },
-          marks: {
-            strong: ({ children }) => (
-              <span style={{ fontWeight: 500 }}>{children}</span>
-            ),
-          },
-        }}
-      />
+      <Box>
+        <PortableText
+          value={data.introText}
+          components={{
+            block: {
+              normal: ({ children }) => (
+                <Typography variant="subtitle1">{children}</Typography>
+              ),
+            },
+            marks: {
+              strong: ({ children }) => (
+                <span style={{ fontWeight: 500 }}>{children}</span>
+              ),
+            },
+          }}
+        />
+      </Box>
 
       <Box
         sx={{
@@ -59,21 +61,23 @@ export const HomePage = () => {
           />
         ))}
       </Box>
-      <PortableText
-        value={data.bodyText}
-        components={{
-          block: {
-            normal: ({ children }) => (
-              <Typography variant="body1">{children}</Typography>
-            ),
-          },
-          marks: {
-            strong: ({ children }) => (
-              <span style={{ fontWeight: 600 }}>{children}</span>
-            ),
-          },
-        }}
-      />
+      <Box>
+        <PortableText
+          value={data.bodyText}
+          components={{
+            block: {
+              normal: ({ children }) => (
+                <Typography variant="body1">{children}</Typography>
+              ),
+            },
+            marks: {
+              strong: ({ children }) => (
+                <span style={{ fontWeight: 600 }}>{children}</span>
+              ),
+            },
+          }}
+        />
+      </Box>
     </Box>
   );
 };

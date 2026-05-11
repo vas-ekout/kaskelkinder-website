@@ -34,6 +34,10 @@ export const fetchFooterImpressumData = async () => {
   return await client.fetch(`*[_type == "footerImpressum"][0]`);
 };
 
+export const fetchFacilitiesPageData = async () => {
+  return await client.fetch(`*[_type == "facilitiesPage"][0]`);
+};
+
 const builder = createImageUrlBuilder(client);
 
 export const urlFor = (source: Parameters<typeof builder.image>[0]) =>

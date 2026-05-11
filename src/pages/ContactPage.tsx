@@ -40,26 +40,32 @@ export const ContactPage = () => {
       }}
     >
       <SectionImageHeader headline={data.headline} />
-      <PortableText
-        value={data.bodyText}
-        components={{
-          block: {
-            normal: ({ children }) => (
-              <Typography variant="body1">{children}</Typography>
-            ),
-          },
-          marks: {
-            strong: ({ children }) => (
-              <span style={{ fontWeight: 600 }}>{children}</span>
-            ),
-            link: ({ value, children }) => (
-              <Link href={value.href} target="_blank" rel="noopener noreferrer">
-                {children}
-              </Link>
-            ),
-          },
-        }}
-      />
+      <Box>
+        <PortableText
+          value={data.bodyText}
+          components={{
+            block: {
+              normal: ({ children }) => (
+                <Typography variant="body1">{children}</Typography>
+              ),
+            },
+            marks: {
+              strong: ({ children }) => (
+                <span style={{ fontWeight: 600 }}>{children}</span>
+              ),
+              link: ({ value, children }) => (
+                <Link
+                  href={value.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {children}
+                </Link>
+              ),
+            },
+          }}
+        />
+      </Box>
 
       <Box
         sx={{

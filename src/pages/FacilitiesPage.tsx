@@ -40,6 +40,14 @@ import {
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
 import { SectionImageHeader } from "../components/SectionImageHeader";
+import { fetchFacilitiesPageData } from "../sanityClient";
+import { PortableText, type PortableTextBlock } from "@portabletext/react";
+import { StyledList, StyledListItem } from "./InitiativePage";
+
+type FacilitiesPageData = {
+  headline: string;
+  descriptionText: PortableTextBlock[];
+};
 
 const slides = [
   { src: Gallery01, alt: "Räumlichkeiten 01" },
@@ -74,6 +82,7 @@ const slides = [
 ];
 
 export const FacilitiesPage = () => {
+  const [data, setData] = useState<FacilitiesPageData | null>(null);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [thumbRef, thumbApi] = useEmblaCarousel({
     containScroll: "keepSnaps",
@@ -84,6 +93,10 @@ export const FacilitiesPage = () => {
 
   const { breakpoints } = useTheme();
   const isXsScreen = useMediaQuery(breakpoints.down("sm"));
+
+  useEffect(() => {
+    fetchFacilitiesPageData().then(setData);
+  }, []);
 
   const onThumbClick = useCallback(
     (index: number) => {
@@ -110,9 +123,11 @@ export const FacilitiesPage = () => {
     };
   }, [emblaApi, onSelect]);
 
+  if (!data) return null;
+
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 8 }}>
-      <SectionImageHeader headline="Unsere Räumlichkeiten" />
+      <SectionImageHeader headline={data.headline} />
 
       <Box>
         {/* Main carousel */}
@@ -206,15 +221,35 @@ export const FacilitiesPage = () => {
         </Box>
       </Box>
 
-      <Typography variant="subtitle1" marginBottom={0}>
-        <Typography variant="subtitle1" component="span" fontWeight={500}>
-          Wir betreuen insgesamt 30 Kinder, die in zwei Gruppen aufgeteilt sind:
-        </Typography>{" "}
-        Füchse für die Kinder zwischen 1 und 3 und Kletteraffen für die Kinder
-        zwischen 3 und 6 Jahren. Die Räumlichkeiten beider Gruppen befinden sich
-        im Erdgeschoss eines Altbaus im Lichtenberger Kaskelkiez in
-        unmittelbarer Nähe zum S-Bhf. Nöldnerplatz.
-      </Typography>
+      <Box>
+        {data.descriptionText && (
+          <PortableText
+            value={data.descriptionText}
+            components={{
+              block: {
+                normal: ({ children }) => (
+                  <Typography variant="subtitle1" marginBottom={0}>
+                    {children}
+                  </Typography>
+                ),
+              },
+              marks: {
+                strong: ({ children }) => (
+                  <span style={{ fontWeight: 500 }}>{children}</span>
+                ),
+              },
+              list: {
+                bullet: ({ children }) => <StyledList>{children}</StyledList>,
+              },
+              listItem: {
+                bullet: ({ children }) => (
+                  <StyledListItem>{children}</StyledListItem>
+                ),
+              },
+            }}
+          />
+        )}
+      </Box>
     </Box>
   );
 };
