@@ -25,17 +25,30 @@ interface CtaCardProps {
 export const CtaCard = ({ buttonLabel, headline, url }: CtaCardProps) => {
   const { breakpoints } = useTheme();
   const isXsScreen = useMediaQuery(breakpoints.down("sm"));
+  const isLgScreen = useMediaQuery(breakpoints.up("lg"));
+  console.log(breakpoints.values);
 
   const onClick = () => window.open(url, "_blank", "noopener,noreferrer");
 
   return (
-    <StyledCard>
+    <StyledCard
+      sx={{
+        flexDirection: isLgScreen ? "row" : "column",
+        justifyContent: isLgScreen ? "space-between" : "",
+      }}
+    >
       <Typography variant="h2" marginBottom={0}>
         {headline}
       </Typography>
-      <ArrowDownwardIcon sx={{ alignSelf: "center", color: "primary.main" }} />
+      <ArrowDownwardIcon
+        sx={{
+          alignSelf: "center",
+          color: "primary.main",
+          transform: isLgScreen ? "rotate(-90deg)" : "",
+        }}
+      />
       <Button
-        sx={{ paddingInline: 2 }}
+        sx={{ paddingInline: 8 }}
         onClick={onClick}
         size={isXsScreen ? "small" : "medium"}
       >

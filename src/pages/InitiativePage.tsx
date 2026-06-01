@@ -1,21 +1,11 @@
 import InitiativeImg from "../assets/imgs/initiative.jpg";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
-import {
-  Box,
-  Button,
-  List,
-  ListItem,
-  styled,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, List, ListItem, styled, Typography } from "@mui/material";
 import { SectionImageHeader } from "../components/SectionImageHeader";
 import { useEffect, useState } from "react";
 import { fetchInitiativePageData } from "../sanityClient";
 import { PortableText, type PortableTextBlock } from "@portabletext/react";
+import { CtaCard } from "../components/CtaCard";
 
 export const StyledList = styled(List)(() => ({
   listStyleType: "square",
@@ -41,9 +31,6 @@ export const InitiativePage = () => {
   useEffect(() => {
     fetchInitiativePageData().then(setData);
   }, []);
-  const { breakpoints } = useTheme();
-  const isSmallScreen = useMediaQuery(breakpoints.down("md"));
-  const isXsScreen = useMediaQuery(breakpoints.down("sm"));
 
   if (!data) return null;
 
@@ -111,44 +98,11 @@ export const InitiativePage = () => {
         </Box>
       )}
 
-      <Box
-        sx={{
-          padding: 4,
-          borderRadius: 1,
-          bgcolor: "background.paper",
-          display: "flex",
-          gap: 2,
-          alignItems: "center",
-          flexDirection: isSmallScreen ? "column" : "row",
-        }}
-      >
-        <Typography variant="h6" sx={{ marginBottom: 0, textAlign: "center" }}>
-          {data.satzungText}
-        </Typography>
-        {isSmallScreen ? (
-          <ArrowDownwardIcon
-            sx={{ alignSelf: "center", color: "primary.main" }}
-          />
-        ) : (
-          <ArrowForwardIcon
-            sx={{ alignSelf: "center", color: "primary.main" }}
-          />
-        )}
-        <Button
-          onClick={() =>
-            window.open(
-              data.satzungFile.asset.url,
-              "_blank",
-              "noopener,noreferrer",
-            )
-          }
-          fullWidth={isSmallScreen}
-          sx={{ paddingInline: 8, flexGrow: 1 }}
-          size={isXsScreen ? "small" : "medium"}
-        >
-          Download
-        </Button>
-      </Box>
+      <CtaCard
+        buttonLabel="Download"
+        headline={data.satzungText}
+        url={data.satzungFile.asset.url}
+      />
     </Box>
   );
 };
