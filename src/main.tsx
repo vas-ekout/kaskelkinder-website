@@ -7,7 +7,7 @@ import { ThemeProvider } from "@mui/material";
 import { lightTheme } from "./styles/theme.ts";
 
 createRoot(document.getElementById("root")!).render(
-  <Router basename="/kaskelkinder-website">
+  <Router basename={import.meta.env.BASE_URL}>
     <ThemeProvider theme={lightTheme}>
       <StrictMode>
         <App />
