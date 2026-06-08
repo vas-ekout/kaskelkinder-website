@@ -26,7 +26,9 @@ jobs:
           cache: pnpm
 
       - run: pnpm install
-      - run: pnpm build -- --base /kaskelkinder-website/
+      - run: pnpm build
+        env:
+          APP_BASE_PATH: /kaskelkinder-website/
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
