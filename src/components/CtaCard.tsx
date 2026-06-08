@@ -26,7 +26,6 @@ export const CtaCard = ({ buttonLabel, headline, url }: CtaCardProps) => {
   const { breakpoints } = useTheme();
   const isXsScreen = useMediaQuery(breakpoints.down("sm"));
   const isLgScreen = useMediaQuery(breakpoints.up("lg"));
-  console.log(breakpoints.values);
 
   const onClick = () => window.open(url, "_blank", "noopener,noreferrer");
 
