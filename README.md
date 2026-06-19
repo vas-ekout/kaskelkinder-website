@@ -4,8 +4,8 @@ A website for **Kaskelkinder**, a parent-run childcare initiative (_Kinderladen_
 
 ## Screenshots
 
-<img src="screenshot/screenshot-desktop.jpg" alt="Kaskelkinder – Desktop" width="100%" />
-<img src="screenshot/screenshot-mobile.jpg" alt="Kaskelkinder – Mobile" width="360" />
+<img src="screenshots/screenshot-desktop.jpg" alt="Kaskelkinder – Desktop" width="100%" />
+<img src="screenshots/screenshot-mobile.jpg" alt="Kaskelkinder – Mobile" width="360" />
 
 ## Tech Stack
 
