@@ -25,4 +25,4 @@ A website for **Kaskelkinder**, a parent-run childcare initiative (_Kinderladen_
 
 ## Status
 
-Currently in final content review — launching soon.
+Deployed and live at https://kaskelkinder.de
