@@ -2,6 +2,11 @@
 
 A website for **Kaskelkinder**, a parent-run childcare initiative (_Kinderladen_) in Berlin. Built as a freelance project to give the initiative a modern, welcoming online presence.
 
+## Screenshots
+
+<img src="screenshot/screenshot-desktop.jpg" alt="Kaskelkinder – Desktop" width="100%" />
+<img src="screenshot/screenshot-mobile.jpg" alt="Kaskelkinder – Mobile" width="360" />
+
 ## Tech Stack
 
 - **React** + **TypeScript** (Vite)
